@@ -1,0 +1,41 @@
+name: user input demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "Enter your name"
+        required: true
+        type: string
+
+      environment:
+        description: "Select environment"
+        required: true
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+
+      message:
+        description: "Enter a message"
+        required: false
+        default: "Hello World"
+        type: string
+
+jobs:
+  test-input:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Display User Inputs
+        run: |
+          echo "Username: ${{ inputs.username }}"
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Message: ${{ inputs.message }}"
+
+      - name: Hello User
+        run: |
+          echo "Hello ${{ inputs.username }}!"
+          echo "You selected ${{ inputs.environment }} environment."
+          echo "Your message is: ${{ inputs.message }}"
