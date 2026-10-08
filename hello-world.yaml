@@ -1,6 +1,6 @@
-name: Hello World # job name
+name: Hello World
 
-on:[push] #where to push workflow
+on:[push] 
 
 jobs:
   hello:
